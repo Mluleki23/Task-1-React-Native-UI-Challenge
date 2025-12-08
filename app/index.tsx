@@ -8,8 +8,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import CurrencyCard from "../assets/components/CurrencyCard";
+import FeeDetails from "../assets/components/FeeDetails";
+import Header from "../assets/components/Header";
 
 export default function Index() {
   const [fromCrypto, setFromCrypto] = useState("ETH");
@@ -20,17 +22,7 @@ export default function Index() {
       <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
 
       {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => alert("Back pressed")}>
-          <Icon name="chevron-back" size={28} color="white" />
-        </TouchableOpacity>
-
-        <Text style={styles.headerTitle}>Exchange</Text>
-
-        <TouchableOpacity onPress={() => alert("Notifications")}>
-          <Icon name="notifications-outline" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
+      <Header title="Exchange" />
 
       <ScrollView
         style={{ flex: 1 }}
@@ -38,23 +30,13 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
       >
         {/* Currency Card 1 - From */}
-        <View style={styles.currencyCard}>
-          <View style={styles.currencyHeader}>
-            <View style={styles.currencyInfo}>
-              <MaterialIcon name="ethereum" size={28} color="white" />
-              <Text style={styles.currencySymbol}>ETH</Text>
-              <MaterialIcon name="chevron-down" size={20} color="#9ca3af" />
-            </View>
-            <View style={styles.currencyAction} />
-          </View>
-
-          <Text style={styles.currencyAmount}>12,695</Text>
-
-          <View style={styles.currencyBalance}>
-            <Text style={styles.balanceLabel}>Balance</Text>
-            <Text style={styles.balanceValue}>293.0187</Text>
-          </View>
-        </View>
+        <CurrencyCard
+          icon="ethereum"
+          symbol="ETH"
+          amount="12,695"
+          balanceLabel="Balance"
+          balanceValue="293.0187"
+        />
 
         {/* Exchange Toggle Button */}
         <View style={styles.exchangeButtonContainer}>
@@ -71,23 +53,13 @@ export default function Index() {
         </View>
 
         {/* Currency Card 2 - To */}
-        <View style={styles.currencyCard}>
-          <View style={styles.currencyHeader}>
-            <View style={styles.currencyInfo}>
-              <Text style={styles.currencySymbolUSD}>$</Text>
-              <Text style={styles.currencySymbol}>USD</Text>
-              <MaterialIcon name="chevron-down" size={20} color="#9ca3af" />
-            </View>
-            <View style={styles.currencyAction} />
-          </View>
-
-          <Text style={styles.currencyAmount}>43,937.4</Text>
-
-          <View style={styles.currencyBalance}>
-            <Text style={styles.balanceLabel}>Balance</Text>
-            <Text style={styles.balanceValue}>12,987.21</Text>
-          </View>
-        </View>
+        <CurrencyCard
+          symbol="USD"
+          amount="43,937.4"
+          balanceLabel="Balance"
+          balanceValue="12,987.21"
+          isUSD={true}
+        />
 
         {/* Exchange Rate */}
         <View style={styles.rateContainer}>
@@ -106,27 +78,14 @@ export default function Index() {
         </View>
 
         {/* Fee Details */}
-        <View style={styles.detailsContainer}>
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Estimate fee</Text>
-            <Text style={styles.detailValue}>4.28 usd</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>You will receive</Text>
-            <Text style={styles.detailValue}>43,941.68 USD</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Spread</Text>
-            <Text style={styles.detailValue}>0.2%</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Gas fee</Text>
-            <Text style={styles.detailValue}>0.0045 ETH</Text>
-          </View>
-        </View>
+        <FeeDetails
+          details={[
+            { label: "Estimate fee", value: "4.28 usd" },
+            { label: "You will receive", value: "43,941.68 USD" },
+            { label: "Spread", value: "0.2%" },
+            { label: "Gas fee", value: "0.0045 ETH" },
+          ]}
+        />
 
         <View style={{ height: 30 }} />
       </ScrollView>
@@ -139,77 +98,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1a1a2e",
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    paddingTop: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#2a2a3e",
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "white",
-  },
   scrollContent: {
     paddingBottom: 20,
-  },
-  currencyCard: {
-    marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 8,
-    backgroundColor: "#2a2a3e",
-    borderRadius: 16,
-    padding: 20,
-  },
-  currencyHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  currencyInfo: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  currencySymbol: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: "white",
-  },
-  currencySymbolUSD: {
-    fontSize: 20,
-    fontWeight: "700",
-    color: "white",
-    marginRight: 4,
-  },
-  currencyAction: {
-    width: 24,
-    height: 24,
-  },
-  currencyAmount: {
-    fontSize: 44,
-    fontWeight: "700",
-    color: "white",
-    marginBottom: 12,
-  },
-  currencyBalance: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  balanceLabel: {
-    fontSize: 12,
-    color: "#9ca3af",
-  },
-  balanceValue: {
-    fontSize: 14,
-    color: "white",
-    fontWeight: "600",
   },
   exchangeButtonContainer: {
     alignItems: "center",
@@ -234,26 +124,5 @@ const styles = StyleSheet.create({
   buyButtonContainer: {
     paddingHorizontal: 20,
     marginBottom: 24,
-  },
-  detailsContainer: {
-    marginHorizontal: 20,
-    backgroundColor: "#2a2a3e",
-    borderRadius: 12,
-    padding: 16,
-  },
-  detailRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 12,
-  },
-  detailLabel: {
-    fontSize: 13,
-    color: "#9ca3af",
-  },
-  detailValue: {
-    fontSize: 13,
-    color: "white",
-    fontWeight: "600",
   },
 });
