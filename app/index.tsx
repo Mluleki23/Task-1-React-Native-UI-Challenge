@@ -108,9 +108,9 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   exchangeButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     backgroundColor: "#3a3a4e",
     alignItems: "center",
     justifyContent: "center",
