@@ -25,7 +25,11 @@ const CurrencyCard: React.FC<CurrencyCardProps> = ({
     <View style={[styles.currencyCard, { marginTop }]}>
       <View style={styles.currencyHeader}>
         <View style={styles.currencyInfo}>
-          {!isUSD && <MaterialIcon name={icon} size={28} color="white" />}
+          {!isUSD && (
+            <View style={styles.iconContainer}>
+              <MaterialIcon name={icon} size={24} color="white" />
+            </View>
+          )}
           {isUSD && <Text style={styles.currencySymbolUSD}>$</Text>}
           <Text style={styles.currencySymbol}>{symbol}</Text>
           <MaterialIcon name="chevron-down" size={20} color="#9ca3af" />
@@ -61,6 +65,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+  },
+  iconContainer: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: "#111827",
+    justifyContent: "center",
+    alignItems: "center",
   },
   currencySymbol: {
     fontSize: 18,

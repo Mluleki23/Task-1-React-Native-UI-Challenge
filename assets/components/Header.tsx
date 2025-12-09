@@ -21,8 +21,12 @@ const Header: React.FC<HeaderProps> = ({
 
       <Text style={styles.headerTitle}>{title}</Text>
 
-      <TouchableOpacity onPress={onNotificationsPress}>
+      <TouchableOpacity
+        onPress={onNotificationsPress}
+        style={styles.notificationContainer}
+      >
         <Icon name="notifications-outline" size={24} color="white" />
+        <View style={styles.notificationBadge} />
       </TouchableOpacity>
     </View>
   );
@@ -43,6 +47,18 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "700",
     color: "white",
+  },
+  notificationContainer: {
+    position: "relative",
+  },
+  notificationBadge: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "red",
   },
 });
 
