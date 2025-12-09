@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     backgroundColor: "#2a2a3e",
     borderRadius: 16,
+    borderWidth: 0,
     padding: 20,
   },
   currencyHeader: {

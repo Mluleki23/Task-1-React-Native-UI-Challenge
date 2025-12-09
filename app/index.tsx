@@ -97,7 +97,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1a1a2e",
+    backgroundColor: "black",
   },
   scrollContent: {
     paddingBottom: 20,
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     backgroundColor: "#3a3a4e",
+    borderWidth: 0,
     alignItems: "center",
     justifyContent: "center",
   },
