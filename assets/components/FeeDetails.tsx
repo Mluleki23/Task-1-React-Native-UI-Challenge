@@ -26,8 +26,6 @@ const FeeDetails: React.FC<FeeDetailsProps> = ({ details }) => {
 const styles = StyleSheet.create({
   detailsContainer: {
     marginHorizontal: 20,
-    backgroundColor: "#2a2a3e",
-    borderRadius: 12,
     padding: 16,
   },
   detailRow: {

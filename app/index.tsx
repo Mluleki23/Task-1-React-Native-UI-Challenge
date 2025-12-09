@@ -59,6 +59,7 @@ export default function Index() {
           balanceLabel="Balance"
           balanceValue="12,987.21"
           isUSD={true}
+          marginTop={0}
         />
 
         {/* Exchange Rate */}
@@ -103,7 +104,8 @@ const styles = StyleSheet.create({
   },
   exchangeButtonContainer: {
     alignItems: "center",
-    marginVertical: 8,
+    marginTop: 0,
+    marginBottom: 0,
   },
   exchangeButton: {
     width: 48,
@@ -123,6 +125,6 @@ const styles = StyleSheet.create({
   },
   buyButtonContainer: {
     paddingHorizontal: 20,
-    marginBottom: 24,
+    marginBottom: 0,
   },
 });

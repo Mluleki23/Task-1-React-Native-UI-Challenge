@@ -9,6 +9,7 @@ interface CurrencyCardProps {
   balanceLabel: string;
   balanceValue: string;
   isUSD?: boolean;
+  marginTop?: number;
 }
 
 const CurrencyCard: React.FC<CurrencyCardProps> = ({
@@ -18,9 +19,10 @@ const CurrencyCard: React.FC<CurrencyCardProps> = ({
   balanceLabel,
   balanceValue,
   isUSD = false,
+  marginTop = 20,
 }) => {
   return (
-    <View style={styles.currencyCard}>
+    <View style={[styles.currencyCard, { marginTop }]}>
       <View style={styles.currencyHeader}>
         <View style={styles.currencyInfo}>
           {!isUSD && <MaterialIcon name={icon} size={28} color="white" />}
@@ -44,8 +46,7 @@ const CurrencyCard: React.FC<CurrencyCardProps> = ({
 const styles = StyleSheet.create({
   currencyCard: {
     marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 8,
+    marginBottom: 0,
     backgroundColor: "#2a2a3e",
     borderRadius: 16,
     padding: 20,
